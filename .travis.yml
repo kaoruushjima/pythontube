@@ -9,3 +9,4 @@ notifications:
   slack: myspace-kaoru:24x83GHaRJRGYWzvcC1s23SP
 env:
   - DJANGO_VERSION=3.0.7
+script: make test
