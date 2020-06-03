@@ -7,3 +7,5 @@ install:
   - pip install -r requirements/development.txt
 script:
   - pycodestyle .
+notifications:
+  slack: myspace-kaoru:24x83GHaRJRGYWzvcC1s23SP
