@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -120,3 +122,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Django의 기본 유저가 INSTALLED_APPS -> django.contrib.auth에서 models의 user가 있으니까 불러온다
+# 그래서 명시적으로 얘를 안불러온다라고 적어줘야 한다.
+# 우리가 쓴 user를 앞으로 쓰겠다고 overriding을 해준다.
+
+AUTH_USER_MODEL = "users.User"
