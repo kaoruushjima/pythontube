@@ -58,7 +58,10 @@ ROOT_URLCONF = 'pythontube.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            # pythontube에 모델을 만들지 않았기 때문에 templates 경로를 지정해 줘야한다.
+            os.path.join(BASE_DIR, "pythontube", "templates"),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
