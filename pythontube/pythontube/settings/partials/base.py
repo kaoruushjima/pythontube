@@ -134,3 +134,7 @@ STATIC_URL = '/static/'
 # 우리가 쓴 user를 앞으로 쓰겠다고 overriding을 해준다.
 
 AUTH_USER_MODEL = "users.User"
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
