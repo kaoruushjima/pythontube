@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'users',
 ]
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -128,7 +129,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "pythontube", "static"),
 ]
 STATIC_URL = '/static/'
-
+STATIC_ROOT = os.path.join(PROJECT_ROOT_DIR, "dist", "static")
 # Django의 기본 유저가 INSTALLED_APPS -> django.contrib.auth에서 models의 user가 있으니까 불러온다
 # 그래서 명시적으로 얘를 안불러온다라고 적어줘야 한다.
 # 우리가 쓴 user를 앞으로 쓰겠다고 overriding을 해준다.
