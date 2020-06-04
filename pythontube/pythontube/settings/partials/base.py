@@ -124,6 +124,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "pythontube", "static"),
+]
 STATIC_URL = '/static/'
 
 # Django의 기본 유저가 INSTALLED_APPS -> django.contrib.auth에서 models의 user가 있으니까 불러온다
