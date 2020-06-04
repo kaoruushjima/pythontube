@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'pipeline',
+
     'users',
 ]
 
@@ -130,6 +132,29 @@ STATICFILES_DIRS = [
 ]
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(PROJECT_ROOT_DIR, "dist", "static")
+STATICFILES_STORAGE = 'pipeline.storage.PipelineManifestStorage'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+
+    'pipeline.finders.PipelineFinder',
+)
+
+PIPELINE = {
+    # 'PIPELINE_ENABLED': True, # m collectstatic을 해야만 보인다다
+    'STYLESHEETS': {
+        'pythontube': {
+            'source_filenames': (
+              'css/application.css',
+              'css/partials/*.css',
+            ),
+            'output_filename': 'css/pythontube.css',
+        }
+    }
+}
+
+
 # Django의 기본 유저가 INSTALLED_APPS -> django.contrib.auth에서 models의 user가 있으니까 불러온다
 # 그래서 명시적으로 얘를 안불러온다라고 적어줘야 한다.
 # 우리가 쓴 user를 앞으로 쓰겠다고 overriding을 해준다.
