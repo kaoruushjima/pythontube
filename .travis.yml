@@ -11,5 +11,5 @@ env:
   - DJANGO_VERSION=3.0.7
 script: 
  - python pythontube/manage.py makemigrations
- - pythonpythontube/ manage.py migrate
- - python pythontube/manage.py test
+ - python pythontube/manage.py migrate
+ - python pythontube/manage.py runserver
