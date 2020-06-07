@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'pipeline',
+    'social_django',
 
     'users',
 ]
@@ -72,6 +73,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -153,21 +157,3 @@ PIPELINE = {
         }
     }
 }
-
-
-# Django의 기본 유저가 INSTALLED_APPS -> django.contrib.auth에서 models의 user가 있으니까 불러온다
-# 그래서 명시적으로 얘를 안불러온다라고 적어줘야 한다.
-# 우리가 쓴 user를 앞으로 쓰겠다고 overriding을 해준다.
-
-AUTH_USER_MODEL = "users.User"
-
-# Login required decorator나 Login required Mixedin을 통해서 다른페이지로 이동이 됐을 때 로그인이라는 key로 받게 된다.
-LOGIN_URL = '/login/'
-
-SIGNUP_SUCCESS_MESSAGE = "성공적으로 회원가입 되었습니다."
-LOGIN_SUCCESS_MESSAGE = "성공적으로 로그인 되었습니다."
-LOGOUT_SUCCESS_MESSAGE = "성공적으로 로그아웃 되었습니다."
-
-INTERNAL_IPS = [
-    '127.0.0.1',
-]

@@ -3,3 +3,4 @@ pycodestyle
 ipython[all]
 django-debug-toolbar
 django-extensions
+social-auth-app-django
