@@ -164,6 +164,10 @@ AUTH_USER_MODEL = "users.User"
 # Login required decorator나 Login required Mixedin을 통해서 다른페이지로 이동이 됐을 때 로그인이라는 key로 받게 된다.
 LOGIN_URL = '/login/'
 
+SIGNUP_SUCCESS_MESSAGE = "성공적으로 회원가입 되었습니다."
+LOGIN_SUCCESS_MESSAGE = "성공적으로 로그인 되었습니다."
+LOGOUT_SUCCESS_MESSAGE = "성공적으로 로그아웃 되었습니다."
+
 INTERNAL_IPS = [
     '127.0.0.1',
 ]

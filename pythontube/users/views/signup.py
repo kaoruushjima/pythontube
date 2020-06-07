@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth import get_user_model
 from django.contrib import messages
+from django.conf import settings
 
 
 class SignupView(View):
@@ -27,6 +28,6 @@ class SignupView(View):
         messages.add_message(
             request,
             messages.SUCCESS,
-            "성공적으로 회원가입 되었습니다.",
+            settings.SIGNUP_SUCCESS_MESSAGE,
             )
         return redirect(reverse("login"))

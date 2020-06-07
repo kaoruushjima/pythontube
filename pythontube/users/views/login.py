@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.contrib.auth import authenticate, login
 from django.views.generic import View
 from django.contrib import messages
+from django.conf import settings
 
 
 class LoginView(View):
@@ -29,7 +30,7 @@ class LoginView(View):
             messages.add_message(
                 request,
                 messages.SUCCESS,
-                "성공적으로 로그인 되었습니다.",
+                settings.LOGIN_SUCCESS_MESSAGE,
                 )
 
             return redirect(next_url)
