@@ -30,4 +30,4 @@ class SignupView(View):
             messages.SUCCESS,
             settings.SIGNUP_SUCCESS_MESSAGE,
             )
-        return redirect(reverse("login"))
+        return redirect(reverse("users:login"))
