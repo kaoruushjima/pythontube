@@ -27,5 +27,8 @@ class Post(models.Model):
                 video_id=self.video_id,
             )
 
+    # DATABASE는 변경되지 않음
+    youtube_original_url = property(get_youtube_original_url)
+
     def __str__(self):
         return self.title
