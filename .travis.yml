@@ -12,3 +12,4 @@ env:
 script: 
  - python pythontube/manage.py makemigrations
  - python pythontube/manage.py migrate
+ - python pythontube/manage.py test users posts
