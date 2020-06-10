@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'social_django',
 
     'users',
+    'posts',
 ]
 
 
