@@ -5,7 +5,7 @@ from posts.models import Post
 
 
 class PostModelTestCase(TestCase):
-
+    # 밑에 있는 모든 test case가 실행되지 이전에 실행이 되는 것
     def setUp(self):
 
         # Create a user
@@ -29,12 +29,13 @@ class PostModelTestCase(TestCase):
         youtube_original_url = "https://www.youtube.com/watch?v={post_video_id}".format(
                 post_video_id=self.post_video_id,
             )
-
+        # get으로 시작하는 함수에 대한 test code
         self.assertEqual(
             self.post.get_youtube_original_url(),
             youtube_original_url,
         )
 
+        # property에 대한 test code
         self.assertEqual(
             self.post.youtube_original_url,
             youtube_original_url,
