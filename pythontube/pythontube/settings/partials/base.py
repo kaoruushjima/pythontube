@@ -39,7 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'pipeline',
+    'social_django',
+
+    'users',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -56,7 +62,10 @@ ROOT_URLCONF = 'pythontube.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            # pythontube에 모델을 만들지 않았기 때문에 templates 경로를 지정해 줘야한다.
+            os.path.join(BASE_DIR, "pythontube", "templates"),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -64,6 +73,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -119,4 +131,29 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "pythontube", "static"),
+]
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(PROJECT_ROOT_DIR, "dist", "static")
+STATICFILES_STORAGE = 'pipeline.storage.PipelineManifestStorage'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+
+    'pipeline.finders.PipelineFinder',
+)
+
+PIPELINE = {
+    # 'PIPELINE_ENABLED': True, # m collectstatic을 해야만 보인다다
+    'STYLESHEETS': {
+        'pythontube': {
+            'source_filenames': (
+              'css/application.css',
+              'css/partials/*.css',
+            ),
+            'output_filename': 'css/pythontube.css',
+        }
+    }
+}
