@@ -24,6 +24,8 @@ urlpatterns = [
     path('', include('social_django.urls', namespace='social')),
 
     path('', include("users.urls", namespace="users")),
+
+    path('posts/', include("posts.urls", namespace="posts")),
 ]
 
 if settings.DEBUG:
