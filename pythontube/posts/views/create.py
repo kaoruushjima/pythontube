@@ -5,7 +5,7 @@ from django.urls import reverse
 from posts.utils import youtube
 
 
-class PostCreateFormView(View):
+class PostCreateView(View):
 
     def get(self, request, *args, **kwargs):
         return render(
@@ -13,6 +13,19 @@ class PostCreateFormView(View):
             "posts/new.html",
             context={},
         )
+
+    def post(self, request, *args, **kwargs):
+        video_id = request.POST.get("video_id")
+        title = request.POST.get("title")
+        content = request.POST.get("content")
+
+        post = request.user.post_set.create(
+            video_id=video_id,
+            title=title,
+            content=content,
+        )
+
+        return redirect(reverse("posts:create"))
 
 
 class PostCreateConfirmView(View):
