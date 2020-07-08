@@ -5,6 +5,12 @@ from users.models import User
 class Post(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    hash_id = models.CharField(
+        max_length=8,
+        blank=True,
+        null=True,
+    )
     video_id = models.CharField(
         max_length=16,
     )
