@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<h1>Posts Detail</h1>
+
+<section>
+    <iframe width='560' height='315' src="{{ post.youtube_embed_url }}" frameborder='0' allowfullscreen></iframe>
+
+    
+    <h3>{{ title }}</h3>
+    <p>{{ content }}</p>
+
+    <a href="{{ post.youtube_original_url }}" traget="_blank">유튜브 링크 바로가기</a>
+    
+</section>
+
+
+{% endblock %}
