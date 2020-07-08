@@ -8,8 +8,9 @@
     <iframe width='560' height='315' src="{{ post.youtube_embed_url }}" frameborder='0' allowfullscreen></iframe>
 
     
-    <h3>{{ title }}</h3>
-    <p>{{ content }}</p>
+    <h3>{{ post.title }}</h3>
+    <h4>{{ post.video_original_title }}
+    <p>{{ post.content }}</p>
 
     <a href="{{ post.youtube_original_url }}" traget="_blank">유튜브 링크 바로가기</a>
     
