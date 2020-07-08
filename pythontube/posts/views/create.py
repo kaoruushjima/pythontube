@@ -49,5 +49,7 @@ class PostCreateConfirmView(LoginRequiredMixin, View):
 
                 "youtube_original_url": youtube.get_youtube_original_url(video_id),
                 "youtube_embed_url": youtube.get_youtube_embed_url(video_id),
+
+                "youtube_thumbnail_image_url": youtube.get_youtube_thumbnail_image_url(video_id),
             }
         )
