@@ -157,6 +157,15 @@ PIPELINE = {
             ),
             'output_filename': 'css/pythontube.css',
         }
+    },
+    'JAVASCRIPT': {
+        'posts': {
+            'source_filenames': (
+              'js/posts.js',
+              'css/partials/*.css',
+            ),
+            'output_filename': 'js/posts.js',
+        }
     }
 }
 
