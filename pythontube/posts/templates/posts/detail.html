@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load pipeline %} 
 
 
 {% block content %}
@@ -31,4 +32,8 @@
 
 </section>
 
+{% endblock %}
+    
+{% block custom_javascripts %}
+    {% javascript "posts" %}
 {% endblock %}
