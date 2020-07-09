@@ -27,6 +27,8 @@ urlpatterns = [
     path('', include("users.urls", namespace="users")),
 
     path('posts/', include("posts.urls", namespace="posts")),
+
+    path('api/', include("pythontube.urls.api", namespace="api")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
