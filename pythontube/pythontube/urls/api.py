@@ -7,7 +7,7 @@ app_name = 'api'
 urlpatterns = [
     path('posts/', include([
         path('', PostListAPIView.as_view(), name="list"),
-        path('<slug:slug>/comments', PostCommentListAPIView.as_view(), name="comments"),
+        path('<slug:slug>/comments', PostCommentListCreateAPIView.as_view(), name="comments"),
         ])
         )
     ]
