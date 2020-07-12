@@ -16,6 +16,7 @@ class PostCreateView(LoginRequiredMixin, View):
         )
 
     def post(self, request, *args, **kwargs):
+
         video_id = request.POST.get("video_id")
         title = request.POST.get("title")
         content = request.POST.get("content")

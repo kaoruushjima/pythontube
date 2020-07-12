@@ -1,5 +1,6 @@
 from django.urls import reverse
 from django.db import models
+
 from users.models import User
 
 
@@ -12,6 +13,7 @@ class Post(models.Model):
         blank=True,
         null=True,
     )
+
     video_id = models.CharField(
         max_length=16,
     )
@@ -34,41 +36,39 @@ class Post(models.Model):
     like_user_set = models.ManyToManyField(
         User,
         related_name="like_post_set",
+        through="Like",
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def get_youtube_thumbnail_image_url(self):
-        from posts.utils.youtube import get_youtube_thumbnail_image_url as get_youtube_thumbnail_image_url_from_video_id
+        from posts.utils.youtube import get_youtube_thumbnail_image_url\
+            as get_youtube_thumbnail_image_url_from_video_id
         return get_youtube_thumbnail_image_url_from_video_id(self.video_id)
-
     youtube_thumbnail_image_url = property(get_youtube_thumbnail_image_url)
 
     def get_thumbnail_image_url(self):
         if self.thumbnail_image:
             return self.thumbnail_image.url
         return self.youtube_thumbnail_image_url
-
     thumbnail_image_url = property(get_thumbnail_image_url)
 
     def get_youtube_original_url(self):
         from posts.utils.youtube import get_youtube_original_url as get_youtube_original_url_from_video_id
-        return get_youtube_original_url_from_video_id(
-            self.video_id
-        )
+        return get_youtube_original_url_from_video_id(self.video_id)
     # DATABASE는 변경되지 않음
     youtube_original_url = property(get_youtube_original_url)
 
     def get_youtube_embed_url(self):
         from posts.utils.youtube import get_youtube_embed_url as get_youtube_embed_url_from_video_id
-        return get_youtube_embed_url_from_video_id(
-            self.video_id
-        )
+        return get_youtube_embed_url_from_video_id(self.video_id)
     youtube_embed_url = property(get_youtube_embed_url)
 
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("posts:detail", kwargs={"slug": self.hash_id})
+        return reverse("posts:detail", kwargs={
+            "slug": self.hash_id,
+        })
